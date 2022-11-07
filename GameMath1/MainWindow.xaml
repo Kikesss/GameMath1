@@ -1,0 +1,65 @@
+﻿<Window x:Class="gamemath.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gamemath"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800" ResizeMode="NoResize">
+
+    <!--Метод что бы при наведении на кнопку она не подсвечивалась*-->
+    <Window.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#3AAFA9"  >
+
+        <DockPanel VerticalAlignment="Top">
+            <Label HorizontalAlignment="Left" Content="Time: " FontSize="24"/>
+            <Label Name="lblSeconds" HorizontalAlignment="Left"  Content="30s" FontSize="26" />
+            <!--*-->
+            <Button Name="Start" Style="{StaticResource MyButton}" Click="Button_Click_Start" Height="75" Width="200" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#F76C6C" FontSize="40" Cursor="Hand"  />
+        </DockPanel>
+
+        <DockPanel VerticalAlignment="Top" Height="75" Margin="0,75,0,0" RenderTransformOrigin="0.5,0.5" >
+            <Label Content="Right: " FontSize="30"/>
+            <Label Name ="Right" Content ="0" FontSize="32"/>
+        </DockPanel>
+
+        <DockPanel VerticalAlignment="Top" Height="75" Margin="0,120,0,0">
+            <Label Content="Wrong: " FontSize="30"/>
+            <Label Name="Wrong" Content="0" FontSize="32"/>
+        </DockPanel>
+
+        <DockPanel Height="100" Width="300" HorizontalAlignment="Center">
+            <Label Content="GameMath" Name="example" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="50" />
+        </DockPanel>
+
+        <DockPanel VerticalAlignment="Bottom"  >
+            <!--*-->
+            <Button Style="{StaticResource MyButton}" Name="Button1" Content="X" Height="75" Width="200" FontSize="36" Background="#FF85BD6C" Click="Button1_Click"   />
+            <Button Style="{StaticResource MyButton}" Name="Button2" Content="X" Height="75" Width="200" FontSize="36" Background="#FF85BD6C" Click="Button2_Click"  />
+            <Button Style="{StaticResource MyButton}" Name="Button3" Content="X" Height="75" Width="200" FontSize="36" Background="#FF85BD6C" Click="Button3_Click"  />
+            <Button Style="{StaticResource MyButton}" Name="Button4" Content="X" Height="75" Width="200" FontSize="36" Background="#FF85BD6C" Click="Button4_Click"  />
+        </DockPanel>
+
+    </Grid>
+
+</Window>
